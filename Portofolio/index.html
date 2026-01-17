@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Portofolio Saya</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #020617, #020617, #0f172a);
+      font-family: Arial, sans-serif;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid #1e293b;
+  padding: 40px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+
+  animation: fadeUp 1.5s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+
+    .profile {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 3px solid #38bdf8;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+
+.profile:hover {
+  transform: scale(1.25);
+  box-shadow: 0 0 40px rgba(56, 189, 248, 1);
+}
+
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 36px;
+      color: #38bdf8;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: 16px;
+      font-weight: normal;
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+
+    .info {
+      margin: 10px 0;
+      font-size: 15px;
+      color: #cbd5f5;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 6px;
+      padding: 6px 14px;
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      font-size: 13px;
+      border-radius: 20px;
+    }
+    /* animasi card saat halaman dibuka */
+.card {
+  animation: fadeUp 1s ease forwards;
+}
+
+/* animasi foto saat disentuh */
+.profile {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.9);
+}
+
+/* animasi skill tag */
+.tag {
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: #38bdf8;
+  color: #020617;
+  box-shadow: 0 0 15px #38bdf8;
+}
+
+/* keyframes */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.profile {
+  cursor: pointer;
+}
+
+/* background popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 6, 23, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+/* popup aktif */
+.popup.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* foto di popup (bulat) */
+.popup-img {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #38bdf8;
+  box-shadow: 0 0 80px rgba(56, 189, 248, 1);
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="foto.jpg" alt="Foto Profil" class="profile" id="openPopup" />
+
+    <h1>Fachri Ahmad</h1>
+    <h2>Age:18</h2> 
+    <p class="info">sometimes you have to forget what you feel and remember what you deserve </p>
+  </div>
+  <!-- POPUP (TERSEMBUNYI) -->
+<div class="popup" id="popup">
+  <img src="foto.jpg" class="popup-img" />
+</div>
+<script>
+  const foto = document.getElementById("openPopup");
+  const popup = document.getElementById("popup");
+
+  foto.onclick = function () {
+    popup.classList.add("active");
+  };
+
+  popup.onclick = function () {
+    popup.classList.remove("active");
+  };
+</script>
+
+</body>
+</html>
